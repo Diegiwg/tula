@@ -28,7 +28,7 @@ Simple program that increments a binary number (least significant bits come firs
 ```js
 case Inc 0 1 -> Halt
 case Inc 1 0 -> Inc
-run Inc { 1 1 0 1 }
+trace Inc { 1 1 0 1 }
 ```
 
 The trace of the execution of the above program:
@@ -67,7 +67,7 @@ case Swap (a b) (b a) -> Swap
 
 case Swap & & -> Halt
 
-run Swap { (1 2) (2 3) (3 4) & }
+trace Swap { (1 2) (2 3) (3 4) & }
 ```
 
 The trace of the above program:
