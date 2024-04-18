@@ -84,3 +84,5 @@ Swap: (2 1) (3 2) (4 3) &
 Halt: (2 1) (3 2) (4 3) & &
                           ^
 ```
+
+The tape is infinite to the right and filled with the last symbol. In the example above it's `&`.
