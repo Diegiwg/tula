@@ -2,6 +2,8 @@
 
 **Tu**ring **La**nguage. An Esoteric Programming Language based on [Turing Machine](https://en.wikipedia.org/wiki/Turing_machine) extended with [Set Theory](https://en.wikipedia.org/wiki/Set_theory) and [S-expressions](https://en.wikipedia.org/wiki/S-expression).
 
+*The language currently is in development. So the Source Code is not available yet. The development is happening at https://twitch.tv/tsoding The source code will be available as soon as I feel that the project is ready. Also I'll be making a detailed video about this language on my YouTube channel https://youtube.com/@Tsoding*
+
 ## Base Syntax
 
 The program consist of sequence of rules:
