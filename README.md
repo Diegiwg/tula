@@ -26,10 +26,9 @@ case <State> <Read> <Write> <Step> <Next>
 Simple program that increments a binary number (least significant bits come first):
 
 ```js
-// Tape: 1 1 0 1
-
 case Inc 0 1 -> Halt
 case Inc 1 0 -> Inc
+run Inc { 1 1 0 1 }
 ```
 
 The trace of the execution of the above program:
@@ -50,7 +49,7 @@ Halt: 0 0 1 1
 Symbols in the language could be also S-expressions. So you can have a Tape that consists of sequence of pairs of numbers:
 
 ``` js
-// Tape: (1 2) (2 3) (3 4) &
+{ (1 2) (2 3) (3 4) & }
 ```
 
 ## Sets and Universal Quantification
@@ -60,8 +59,6 @@ Tula supports defining Sets (which are collections of S-expression) and using [U
 A simple example that iterates the Tape of Pairs of Numbers and swaps each pair until it reaches the delimiter `&`:
 
 ```js
-// Tape: (1 2) (2 3) (3 4) &
-
 let Numbers { 1 2 3 4 }
 
 for a in Numbers
@@ -69,6 +66,8 @@ for b in Numbers
 case Swap (a b) (b a) -> Swap
 
 case Swap & & -> Halt
+
+run Swap { (1 2) (2 3) (3 4) & }
 ```
 
 The trace of the above program:
