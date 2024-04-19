@@ -1,6 +1,6 @@
 # Tula
 
-**Tu**ring **La**nguage. An Esoteric Programming Language based on [Turing Machine](https://en.wikipedia.org/wiki/Turing_machine) extended with [Set Theory](https://en.wikipedia.org/wiki/Set_theory) and [S-expressions](https://en.wikipedia.org/wiki/S-expression).
+**Tu**ring **La**nguage. An [Esoteric Programming Language](https://en.wikipedia.org/wiki/Esoteric_programming_language) based on [Turing Machine](https://en.wikipedia.org/wiki/Turing_machine) extended with [Set Theory](https://en.wikipedia.org/wiki/Set_theory) and [S-expressions](https://en.wikipedia.org/wiki/S-expression).
 
 *The Language is currently in Development. So the Source Code is not available yet. The Development is happening at https://twitch.tv/tsoding The Source Code will be available as soon as I feel like the project is ready. Also I'll be making a detailed Video about this Language on my YouTube channel https://youtube.com/@Tsoding*
 
@@ -26,7 +26,7 @@ case <State> <Read> <Write> <Step> <Next>
 Simple program that increments a binary number (least significant bits come first):
 
 ```js
-// When in the state `Inc` and read `0`, replace it with `1` move the head 
+// When in the state `Inc` and read `0`, replace it with `1` move the head
 // to the right and switch to the state `Halt` which halts the program.
 case Inc 0 1 -> Halt
 
@@ -124,7 +124,7 @@ case Swap (a b) (b a) -> Swap
 // When in the state `Swap` and read `&`, keep it as `&` move the head to the right and `Halt`
 case Swap & & -> Halt
 
-// Execute and trace the program starting from state `Swap` with the tape that contains a 
+// Execute and trace the program starting from state `Swap` with the tape that contains a
 // bunch of pairs of numbers.
 trace Swap { (1 2) (2 3) (3 4) & }
 ```
