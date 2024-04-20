@@ -107,28 +107,29 @@ You can also nest the Quantifiers:
 let Set { a b c }
 for n in Set
 for m in Set
-case S n m -> S
+case (S n) m 0 -> S
 ```
 
 The above expands to this:
 
 ```js
-case S a a -> S
-case S a b -> S
-case S a c -> S
-case S b a -> S
-case S b b -> S
-case S b c -> S
-case S c a -> S
-case S c b -> S
-case S c c -> S
+case (S a) a a -> S
+case (S a) b a -> S
+case (S a) c a -> S
+case (S b) a b -> S
+case (S b) b b -> S
+case (S b) c b -> S
+case (S c) a c -> S
+case (S c) b c -> S
+case (S c) c c -> S
 ```
 
 Nested Quantifiers that iterate over the same set can be collapsed like so:
 
 ```js
 let Set { a b c }
-for n m in Set case S n m -> S
+for n m in Set
+case (S n) m 0 -> S
 ```
 
 ### Example
@@ -168,3 +169,39 @@ Halt: (2 1) (3 2) (4 3) & &
 ```
 
 The tape is infinite to the right (but not the left!) and filled with the last symbol. In the example above it's `&`.
+
+## Infinite Sets
+
+Tula supports a special "magical" set `Integer` that is infinite
+(actually not, it's `i32`, but you get the point):
+
+```js
+for a b in Integer
+case Swap (a b) (b a) -> Swap
+
+case Swap & & -> Halt
+
+trace Swap { (69 420) (1337 7331) (42 37) & }
+```
+
+The trace of the above program:
+
+```
+Swap: (69 420) (1337 7331) (42 37) &
+      ^
+Swap: (420 69) (1337 7331) (42 37) &
+               ^
+Swap: (420 69) (7331 1337) (42 37) &
+                           ^
+Swap: (420 69) (7331 1337) (37 42) &
+                                   ^
+Halt: (420 69) (7331 1337) (37 42) & &
+                                     ^
+```
+
+It is actually impossible to expand the example because `Integer` is
+just too big. But the Interpreter still prints the trace
+instantaneously because internally it does not actually generate any
+cases. It treats the Sets as Types and performs an efficient Type
+Checking and Pattern Matching to infer the `<Write>`, `<Step>` and
+`<Next>` based on the current state of the Machine.
